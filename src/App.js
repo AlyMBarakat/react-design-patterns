@@ -7,23 +7,22 @@ import { DemoCompoundSelect } from "./session-patterns/compound-components/selec
 
 export const LIGHT = "#475569";
 export const DARK = "#282c34";
+const containerStyle = {
+  width: "80vw",
+  height: "50vw",
+  backgroundColor: LIGHT,
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+};
 
 function App() {
   return (
     <div className="App" style={{ height: "100%" }}>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <div
-          style={{
-            width: "80vw",
-            height: "50vw",
-            backgroundColor: LIGHT,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
+        <div style={containerStyle}>
           {/***  HOC pattern ***/}
           {/*<TodoListWithHOC />*/}
 
