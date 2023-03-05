@@ -2,32 +2,33 @@ import { DARK } from "../../App";
 import { memo } from "react";
 
 function A({ name }) {
-  console.log(`component: A Rendered`);
+  console.log(`Component ${name} is rendering `);
   return <div style={{ color: DARK }}>Type A Component for name: {name}</div>;
 }
 function B({ name }) {
-  console.log(`component: B Rendered`);
+  console.log(`Component ${name} is rendering `);
   return <div style={{ color: DARK }}>Type B Component for name: {name}</div>;
 }
 function C({ name }) {
-  console.log(`component: C Rendered`);
+  console.log(`Component ${name} is rendering `);
   return <div style={{ color: DARK }}>Type C Component for name: {name}</div>;
 }
 function D({ name }) {
-  console.log(`component: D Rendered`);
+  console.log(`Component ${name} is rendering `);
   return <div style={{ color: DARK }}>Type D Component for name: {name}</div>;
 }
 
-const shouldInvalidate = (prevProps, nextProps) => {
+// Memoize cards to disable unnecessary re renders
+const returnCached = (prevProps, nextProps) => {
   return prevProps.name === nextProps.name;
 };
 
-const CachedA = memo(A, shouldInvalidate);
-const CachedB = memo(B, shouldInvalidate);
-const CachedC = memo(C, shouldInvalidate);
-const CachedD = memo(D, shouldInvalidate);
+const CachedA = memo(A, returnCached);
+const CachedB = memo(B, returnCached);
+const CachedC = memo(C, returnCached);
+const CachedD = memo(D, returnCached);
 
-function Factory({ card }) {
+function CardFactory({ card }) {
   const { type, name } = card;
 
   switch (type) {
@@ -44,4 +45,4 @@ function Factory({ card }) {
   }
 }
 
-export { Factory };
+export default CardFactory;

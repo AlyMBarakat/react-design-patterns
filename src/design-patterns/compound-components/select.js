@@ -12,19 +12,11 @@ const optionStyle = {
 
 const SelectContext = createContext(undefined);
 
-const Select = ({ children, defaultSelectedId = "N/A" }) => {
-  const [selectedOption, setSelectedOption] = useState(defaultSelectedId);
-
-  return (
-    <SelectContext.Provider value={{ selectedOption, setSelectedOption }}>
-      {children}
-    </SelectContext.Provider>
-  );
-};
-
+// Consumer Component
 const Option = ({ id, children }) => {
   const { selectedOption, setSelectedOption } = useContext(SelectContext);
 
+  // Ensure usage inside the Select Context only
   if (!selectedOption || !setSelectedOption) {
     throw new Error("Option should be used inside the scope of Select");
   }
@@ -42,13 +34,18 @@ const Option = ({ id, children }) => {
   );
 };
 
-Select.Option = Option;
+// Provider Component
+const Select = ({ children, defaultSelectedId = "N/A" }) => {
+  const [selectedOption, setSelectedOption] = useState(defaultSelectedId);
 
-export const DemoCompoundSelect = () => {
   return (
-    <Select>
-      <Option id="OLIVER">Oliver</Option>
-      <Option id="EVE">Eve</Option>
-    </Select>
+    <SelectContext.Provider value={{ selectedOption, setSelectedOption }}>
+      {children}
+    </SelectContext.Provider>
   );
 };
+
+// Bind Option to Select
+Select.Option = Option;
+
+export default Select;

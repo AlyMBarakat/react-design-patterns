@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function withLoading(WrappedComponent) {
+export function withLoading(WrappedComponent) {
   // HOC
   return function LoadingComponent({ isLoading, ...props }) {
     const [loading, setLoading] = useState(isLoading);
@@ -24,7 +24,7 @@ const TodoList = ({ list }) => {
 
 const TodoListWithLoading = withLoading(TodoList);
 
-export const TodoListWithHOC = () => {
+const TodoListWithHOC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [list, setList] = useState([]);
 
@@ -43,3 +43,5 @@ export const TodoListWithHOC = () => {
     </>
   );
 };
+
+export default TodoListWithHOC;
