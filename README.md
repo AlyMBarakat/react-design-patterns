@@ -1,11 +1,12 @@
 # Advanced React Design Patterns
+
 This project demonstrates 4 Advanced React design patterns:
 * Higher order Component(HoC) Pattern
 * Factory Memoized Component Pattern
 * Compound Component Pattern
 * Container and Presentational Components Pattern
 
-This session is conducted as part of HOF studios technical sessions
+This session is conducted as part of HOF studios technical sessions, check: https://github.com/AlyMBarakat/react-design-patterns/blob/master/React%20Design%20Patterns.pdf for session slides
 
 ## Available Scripts
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
